@@ -64,7 +64,23 @@ For example:
 
 `"Demo with color 3".wp("COLORIZED: ", color: :pur, pattern: '*')`
 
-See screenshot above for more examples.
+or
+
+```ruby
+#
+# see how .wp is called. This method `.wp` returning the original value, so you can use it as normal variable.
+# 
+class A
+  def calc
+    z = balance.wp # same as z = balance
+    100 + 200 + z
+  end
+
+  def balance
+    500
+  end
+end
+```
 
 ## Development
 
