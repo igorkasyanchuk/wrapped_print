@@ -31,8 +31,6 @@ module WrappedPrint
       color_method  = detect_color_method(color)
       logger_method = detect_logger_method
 
-      puts logger_method
-
       if block_given?
         result = yield
         result.tap do
