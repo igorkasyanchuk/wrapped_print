@@ -58,11 +58,15 @@ You can print using `puts` or to `Rails.logger`.
 
 Output could be customized with several options:
 
-`label = nil, pattern: PATTERN, count: COUNT, prefix: nil, suffix: nil, color: nil`
+```ruby
+wp(label = nil, pattern: "-", count: 80, prefix: nil, suffix: nil, color: nil)
+```
 
 For example:
 
-`"Demo with color 3".wp("COLORIZED: ", color: :pur, pattern: '*')`
+```ruby
+"Demo with color 3".wp("COLORIZED: ", color: :pur, pattern: '*')
+```
 
 or
 
@@ -90,7 +94,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/wrapped_print.
+Bug reports and pull requests are welcome on GitHub at https://github.com/igorkasyanchuk/wrapped_print.
 
 
 ## License
