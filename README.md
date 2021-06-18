@@ -16,6 +16,14 @@ This is annoying. It's need to be automated. And this gem is a simple solution.
 
 Just add this gem and use a global method `.wp` to see in the console value of your object or wrap code in block with `wp { ... }`.
 
+```ruby
+def index
+  # to get list of emails and print them in console
+  # .wp method prints in console and returns same object
+  @emails = User.pluck(:emails).wp
+end
+```
+
 See screenshot below with examples of usage (gem can be used not only in specs, this is just an example).
 
 [<img src="https://raw.githubusercontent.com/igorkasyanchuk/wrapped_print/main/docs/demo_print.png"
