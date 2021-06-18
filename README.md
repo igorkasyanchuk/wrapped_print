@@ -49,7 +49,7 @@ And then `require "wrapped_print"`
 
 ## Usage
 
-You can do a simple configuration to the gem:
+You can do a simple configuration to the gem (config/initializers/wrapped_print.rb):
 
 ```ruby
 WrappedPrint.setup do |config|
@@ -59,7 +59,7 @@ WrappedPrint.setup do |config|
   # # applicable only for Logger (not console)
   config.level = :debug
   # config.level = :info
-end
+end if defined?(WrappedPrint)
 ```
 
 You can print using `puts` or to `Rails.logger`.
