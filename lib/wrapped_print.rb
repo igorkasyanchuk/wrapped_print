@@ -4,6 +4,10 @@ require "active_support"
 # WrappedPrint.setup do |config|
   # config.log_to = :console # simply puts
   # config.log_to = :logs # e.g. Rails.logger.info....
+  # config.log_to = :custom
+
+  # # set up custom logger (optional, default is Logger.new("#{Rails.root}/log/wrapped_print.log"))
+  # config.custom_logger = ActiveSupport::Logger.new("#{Rails.root}/log/wrapped_print.log"))
 
   # # applicable only for Logger (not console)
   # config.level = :debug
@@ -13,6 +17,9 @@ require "active_support"
 module WrappedPrint
   mattr_accessor :log_to
   @@log_to = :console
+
+  mattr_accessor :custom_logger
+  @@custom_logger = ActiveSupport::Logger.new("log/wrapped_print.log")
 
   mattr_accessor :level
   @@level = :debug
@@ -51,8 +58,14 @@ module WrappedPrint
 
     private
     def detect_logger_method
-      if WrappedPrint.log_to == :logs
+      case WrappedPrint.log_to
+      when :logs
         Rails.logger.method(WrappedPrint.level)
+      when :custom
+        unless WrappedPrint.custom_logger&.respond_to?(WrappedPrint.level)
+          @@custom_logger = ActiveSupport::Logger.new("log/wrapped_print.log")
+        end
+        WrappedPrint.custom_logger.method(WrappedPrint.level)
       else
         method(:puts)
       end
