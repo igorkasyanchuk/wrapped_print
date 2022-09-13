@@ -18,8 +18,7 @@ RSpec.describe WrappedPrint do
     logger_io = StringIO.new
 
     WrappedPrint.setup do |config|
-      config.log_to = :custom
-      config.custom_logger = ActiveSupport::Logger.new(logger_io)
+      config.log_to = ActiveSupport::Logger.new(logger_io)
     end
 
     expect("Hello".wp).to eq("Hello")

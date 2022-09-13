@@ -3,7 +3,7 @@
 [![RailsJazz](https://github.com/igorkasyanchuk/rails_time_travel/blob/main/docs/my_other.svg?raw=true)](https://www.railsjazz.com)
 [![https://www.patreon.com/igorkasyanchuk](https://github.com/igorkasyanchuk/rails_time_travel/blob/main/docs/patron.svg?raw=true)](https://www.patreon.com/igorkasyanchuk)
 
-How usually you debug your code? Binding.pry, byebug, puts, ... 
+How usually you debug your code? Binding.pry, byebug, puts, ...
 
 How ofter do you write a code something like:
 
@@ -13,7 +13,7 @@ puts current_user.full_name
 puts "="*50
 ```
 
-I do this at least few times per week, sometimes per day. 
+I do this at least few times per week, sometimes per day.
 
 This is annoying. It's need to be automated. And this gem is a simple solution.
 
@@ -58,6 +58,7 @@ You can do a simple configuration to the gem (config/initializers/wrapped_print.
 WrappedPrint.setup do |config|
   # config.log_to = :console # simply puts
   config.log_to = :logs # e.g. Rails.logger.info....
+  # config.log_to = ActiveSupport::Logger.new($stdout) # custom logger
 
   # # applicable only for Logger (not console)
   config.level = :debug
@@ -84,7 +85,7 @@ or
 ```ruby
 #
 # see how .wp is called. This method `.wp` returning the original value, so you can use it as normal variable.
-# 
+#
 class A
   def calc
     z = balance.wp # same as z = balance
