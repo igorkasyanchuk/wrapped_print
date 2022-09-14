@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    wrapped_print (0.1.0)
+    wrapped_print (0.1.1)
       activesupport
 
 GEM
